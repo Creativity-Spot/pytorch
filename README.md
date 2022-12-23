@@ -1,8 +1,9 @@
 ![PyTorch Logo](https://github.com/pytorch/pytorch/blob/master/docs/source/_static/img/pytorch-logo-dark.png)
 
---------------------------------------------------------------------------------
+---
 
 PyTorch is a Python package that provides two high-level features:
+
 - Tensor computation (like NumPy) with strong GPU acceleration
 - Deep neural networks built on a tape-based autograd system
 
@@ -46,14 +47,14 @@ Our trunk health (Continuous Integration signals) can be found at [hud.pytorch.o
 
 At a granular level, PyTorch is a library that consists of the following components:
 
-| Component | Description |
-| ---- | --- |
-| [**torch**](https://pytorch.org/docs/stable/torch.html) | a Tensor library like NumPy, with strong GPU support |
-| [**torch.autograd**](https://pytorch.org/docs/stable/autograd.html) | a tape-based automatic differentiation library that supports all differentiable Tensor operations in torch |
-| [**torch.jit**](https://pytorch.org/docs/stable/jit.html) | a compilation stack (TorchScript) to create serializable and optimizable models from PyTorch code  |
-| [**torch.nn**](https://pytorch.org/docs/stable/nn.html) | a neural networks library deeply integrated with autograd designed for maximum flexibility |
+| Component                                                                            | Description                                                                                                                             |
+| ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| [**torch**](https://pytorch.org/docs/stable/torch.html)                           | a Tensor library like NumPy, with strong GPU support                                                                                    |
+| [**torch.autograd**](https://pytorch.org/docs/stable/autograd.html)               | a tape-based automatic differentiation library that supports all differentiable Tensor operations in torch                              |
+| [**torch.jit**](https://pytorch.org/docs/stable/jit.html)                         | a compilation stack (TorchScript) to create serializable and optimizable models from PyTorch code                                       |
+| [**torch.nn**](https://pytorch.org/docs/stable/nn.html)                           | a neural networks library deeply integrated with autograd designed for maximum flexibility                                              |
 | [**torch.multiprocessing**](https://pytorch.org/docs/stable/multiprocessing.html) | Python multiprocessing, but with magical memory sharing of torch Tensors across processes. Useful for data loading and Hogwild training |
-| [**torch.utils**](https://pytorch.org/docs/stable/data.html) | DataLoader and other utility functions for convenience |
+| [**torch.utils**](https://pytorch.org/docs/stable/data.html)                      | DataLoader and other utility functions for convenience                                                                                  |
 
 Usually, PyTorch is used either as:
 
@@ -137,12 +138,11 @@ You can write new neural network layers in Python using the torch API
 If you want to write your layers in C/C++, we provide a convenient extension API that is efficient and with minimal boilerplate.
 No wrapper code needs to be written. You can see [a tutorial here](https://pytorch.org/tutorials/advanced/cpp_extension.html) and [an example here](https://github.com/pytorch/extension-cpp).
 
-
 ## Installation
 
 ### Binaries
-Commands to install binaries via Conda or pip wheels are on our website: [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)
 
+Commands to install binaries via Conda or pip wheels are on our website: [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)
 
 #### NVIDIA Jetson Platforms
 
@@ -150,17 +150,19 @@ Python wheels for NVIDIA's Jetson Nano, Jetson TX2, and Jetson AGX Xavier are pr
 
 They require JetPack 4.2 and above, and [@dusty-nv](https://github.com/dusty-nv) and [@ptrblck](https://github.com/ptrblck) are maintaining them.
 
-
 ### From Source
 
 #### Prerequisites
+
 If you are installing from source, you will need:
+
 - Python 3.7 or later (for Linux, Python 3.7.6+ or 3.8.1+ is needed)
 - A C++14 compatible compiler, such as clang
 
 We highly recommend installing an [Anaconda](https://www.anaconda.com/distribution/#download-section) environment. You will get a high-quality BLAS library (MKL) and you get controlled dependency versions regardless of your Linux distro.
 
 If you want to compile with CUDA support, install the following (note that CUDA is not supported on macOS)
+
 - [NVIDIA CUDA](https://developer.nvidia.com/cuda-downloads) 10.2 or above
 - [NVIDIA cuDNN](https://developer.nvidia.com/cudnn) v7 or above
 - [Compiler](https://gist.github.com/ax3l/9489132) compatible with CUDA
@@ -173,6 +175,7 @@ Other potentially useful environment variables may be found in `setup.py`.
 If you are building for NVIDIA's Jetson platforms (Jetson Nano, TX1, TX2, AGX Xavier), Instructions to install PyTorch for Jetson Nano are [available here](https://devtalk.nvidia.com/default/topic/1049071/jetson-nano/pytorch-for-jetson-nano/)
 
 If you want to compile with ROCm support, install
+
 - [AMD ROCm](https://rocmdocs.amd.com/en/latest/Installation_Guide/Installation-Guide.html) 4.0 and above installation
 - ROCm is currently supported only for Linux systems.
 
@@ -190,9 +193,7 @@ classesconda install astunparse numpy ninja pyyaml setuptools cmake cffi typing_
 **On Linux**
 
 ```bash
-conda install mkl mkl-include
-# CUDA only: Add LAPACK support for the GPU if needed
-conda install -c pytorch magma-cuda110  # or the magma-cuda* that matches your CUDA version from https://anaconda.org/pytorch/repo
+conda install mkl kl-
 ```
 
 **On MacOS**
@@ -214,6 +215,7 @@ conda install -c conda-forge libuv=1.39
 ```
 
 #### Get the PyTorch Source
+
 ```bash
 git clone --recursive https://github.com/pytorch/pytorch
 cd pytorch
@@ -223,15 +225,18 @@ git submodule update --init --recursive --jobs 0
 ```
 
 #### Install PyTorch
+
 **On Linux**
 
 If you're compiling for AMD ROCm then first run this command:
+
 ```bash
 # Only run this if you're compiling for ROCm
 python tools/amd_build/build_amd.py
 ```
 
 Install PyTorch
+
 ```bash
 export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}
 python setup.py install
@@ -288,13 +293,12 @@ NVTX is a part of CUDA distributive, where it is called "Nsight Compute". To ins
 Make sure that CUDA with Nsight Compute is installed after Visual Studio.
 
 Currently, VS 2017 / 2019, and Ninja are supported as the generator of CMake. If `ninja.exe` is detected in `PATH`, then Ninja will be used as the default generator, otherwise, it will use VS 2017 / 2019.
-<br/> If Ninja is selected as the generator, the latest MSVC will get selected as the underlying toolchain.
+`<br/>` If Ninja is selected as the generator, the latest MSVC will get selected as the underlying toolchain.
 
 Additional libraries such as
 [Magma](https://developer.nvidia.com/magma), [oneDNN, a.k.a MKLDNN or DNNL](https://github.com/oneapi-src/oneDNN), and [Sccache](https://github.com/mozilla/sccache) are often needed. Please refer to the [installation-helper](https://github.com/pytorch/pytorch/tree/master/.jenkins/pytorch/win-test-helpers/installation-helpers) to install them.
 
 You can refer to the [build_pytorch.bat](https://github.com/pytorch/pytorch/blob/master/.jenkins/pytorch/win-test-helpers/build_pytorch.bat) script for some other environment variables configurations
-
 
 ```cmd
 cmd
@@ -326,6 +330,7 @@ the following. For example, adjusting the pre-detected directories for CuDNN or 
 with such a step.
 
 On Linux
+
 ```bash
 export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}
 python setup.py build --cmake-only
@@ -333,6 +338,7 @@ ccmake build  # or cmake-gui build
 ```
 
 On macOS
+
 ```bash
 export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}
 MACOSX_DEPLOYMENT_TARGET=10.9 CC=clang CXX=clang++ python setup.py build --cmake-only
@@ -360,6 +366,7 @@ should increase shared memory size either with `--ipc=host` or `--shm-size` comm
 The `Dockerfile` is supplied to build images with CUDA 11.1 support and cuDNN v8.
 You can pass `PYTHON_VERSION=x.y` make variable to specify which Python version is to be used by Miniconda, or leave it
 unset to use the default.
+
 ```bash
 make -f docker.Makefile
 # images are tagged as docker.io/${your_docker_username}/pytorch
@@ -374,6 +381,7 @@ readthedocs theme.
 cd docs/
 pip install -r requirements.txt
 ```
+
 You can then build the documentation by running `make <format>` from the
 `docs/` folder. Run `make` to get a list of all available output formats.
 
@@ -385,10 +393,10 @@ If you get a katex error run `npm install katex`.  If it persists, try
 Installation instructions and binaries for previous PyTorch versions may be found
 on [our website](https://pytorch.org/previous-versions).
 
-
 ## Getting Started
 
 Three-pointers to get you started:
+
 - [Tutorials: get you started with understanding and using PyTorch](https://pytorch.org/tutorials/)
 - [Examples: easy to understand PyTorch code across all domains](https://github.com/pytorch/examples)
 - [The API Reference](https://pytorch.org/docs/)
@@ -408,6 +416,7 @@ Three-pointers to get you started:
 * [PyTorch YouTube](https://www.youtube.com/channel/UCWXI5YeOsh03QvJ59PMaXFw)
 
 ## Communication
+
 * Forums: Discuss implementations, research, etc. https://discuss.pytorch.org
 * GitHub Issues: Bug reports, feature requests, install issues, RFCs, thoughts, etc.
 * Slack: The [PyTorch Slack](https://pytorch.slack.com/) hosts a primary audience of moderate to experienced PyTorch users and developers for general chat, online discussions, collaboration, etc. If you are a beginner looking for help, the primary medium is [PyTorch Forums](https://discuss.pytorch.org). If you need a slack invite, please fill this form: https://goo.gl/forms/PP1AGvNHpSaJP8to1
