@@ -336,3 +336,5 @@ third_party/glog/
 third_party/breakpad/
 third_party/benchmark
 pytorch/
+
+.fake
